@@ -28,7 +28,7 @@ public class Bookingdao {
 				
 				int i = Pstmt1.executeUpdate();
 
-				System.out.println("Booking Success");
+				//System.out.println("Booking Success");
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

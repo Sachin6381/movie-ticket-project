@@ -30,6 +30,9 @@ public class usertestmain {
 		Connection con = Connectionmv4.DBConnection();
 		// System.out.println("Connection established");
 		userdao uDao = new userdao();
+		int user_id=0;
+		String email_id=null;
+		int wallet=0;
 		System.out.println("\t welcome Like myshow");
 		System.out.println("\n1.Register \n2.Login \n3.Update password\n4.Admin login");
 		int choice = sc.nextInt();
@@ -140,11 +143,11 @@ public class usertestmain {
 			
 			
 			
-			System.out.println("\n1.Show Movie List \n2.Show Theatre List");
-			int choice8 = sc.nextInt();
-			sc.nextLine();
-			switch (choice8) {
-			case 1:
+//			System.out.println("\n1.Show Movie List \n2.Show Theatre List");
+//			int choice8 = sc.nextInt();
+//			sc.nextLine();
+//			switch (choice8) {
+//			case 1:
                
 			// showquery movielist
 			System.out.println("Movielist \n");
@@ -169,7 +172,7 @@ public class usertestmain {
             u2.searchmovie(uA1);
            
            
-		
+			
            
              //showtheatre
 		
@@ -211,6 +214,19 @@ public class usertestmain {
                  Bookingdao book=new Bookingdao();
                  Bookingdetail detail=new Bookingdetail(user.getUser_id(),theatreid4,seat1,(moviePrice*seat1),"booked",name);
                  book.insert(detail);
+                 System.out.println("enter userid!!");
+                 int uid = sc.nextInt();
+                 sc.nextLine();
+                 User userwall = new User(uid);
+                 userdao userdao = new userdao();
+                int dedwallbal =  userdao.getwallet(userwall)-180;
+                User userwall1 = new User(uid,dedwallbal);
+               int res = userdao.updatewallet(userwall1);
+               if(res > 0) {
+            	   System.out.println("booked Sucessfully!!");
+               }else {
+            	   System.out.println("something went wrong try again!!");
+               }
             }
             
             System.out.println("\n1.View my Booking details  \n2.cancel Booking");
@@ -291,12 +307,8 @@ public class usertestmain {
 			//admin
 
            case 4:
-        	   System.out.println("1.Admin login\n2.Insert\n3.Update\n4.Delete\n5.Showmovie\n6.Theatreinformation insert\n7.Update\n8.Delete\n9.Showtheatre");
-   			    int admin = Integer.parseInt(sc.nextLine());
-
-   			switch (admin) {
-   			case 1:
-        	   
+//        	   System.out.println("1.Admin login\n2.Insert\n3.Update\n4.Delete\n5.Showmovie\n6.Theatreinformation insert\n7.Update\n8.Delete\n9.Showtheatre");
+//   			    int admin = Integer.parseInt(sc.nextLine());
         	   Admindao user1=new Admindao();
         	   do
         	   {
@@ -313,8 +325,31 @@ public class usertestmain {
         	  else {
         		  System.out.println("admin notsuccess");
         	  }
-           }while(user1==null); 
-        	   break;
+           }while(user1==null);  
+        	   System.out.println("2.Insert\n3.Update\n4.Delete\n5.Showmovie\n6.Theatreinformation insert\n7.Update\n8.Delete\n9.Showtheatre");
+        	   int admin = Integer.parseInt(sc.nextLine());
+
+switch (admin) {
+//   			case 1:
+        	   
+//        	   Admindao user1=new Admindao();
+//        	   do
+//        	   {
+//        	   System.out.println("Admin");
+//        	   System.out.println("\nenter the admin emailid");
+//        	   String emailid2=sc.nextLine();
+//        	   System.out.println("\nenter the admin password");
+//        	   String password2=sc.nextLine();
+//        	   Admindao adminuser=new Admindao();
+////        	  user1= adminuser.validate(emailid2, password2);
+//        	  if(user1!=null) {
+//        		  System.out.println("admin success");
+//        	  }
+//        	  else {
+//        		  System.out.println("admin notsuccess");
+//        	  }
+//           }while(user1==null); 
+//        	   break;
         case 2:
 
         	 System.out.println("Enter the moviedetails");
@@ -380,10 +415,10 @@ public class usertestmain {
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
  	
-         System.out.println("Enter the theatre_name");
-         String theatrename=sc.nextLine();
-         System.out.println("Enter the movie_id");
-         int mvid2=Integer.parseInt(sc.nextLine());
+          System.out.println("Enter the theatre_name");
+          String theatrename=sc.nextLine();
+          System.out.println("Enter the movie_id");
+          int mvid2=Integer.parseInt(sc.nextLine());
        //  System.out.println("Enter the theatre_id");
          //int theatreid2=Integer.parseInt(sc.nextLine());
           System.out.println("Enter the number_seats");
@@ -395,8 +430,8 @@ public class usertestmain {
           System.out.println("Enter the price");
           int price1=Integer.parseInt(sc.nextLine());
           System.out.println("enter movie  date time ");
-  	   	String mvDate = sc.nextLine(); //"2021-12-21 05:30";
-  		LocalDateTime mvTimeDate = LocalDateTime.parse(mvDate, formatter);
+  	      String mvDate = sc.nextLine(); //"2021-12-21 05:30";
+  		  LocalDateTime mvTimeDate = LocalDateTime.parse(mvDate, formatter);
           System.out.println(mvTimeDate);
 
           Theatredao udao5=new Theatredao();
@@ -438,8 +473,13 @@ public class usertestmain {
 				System.out.println(Products13.get(i));
 				
 			}
-   			
-   			
+//           case 10:
+//        	   System.out.println("view user");
+//        	   User user11=new User(user_id,user_name,gender,email_id,Long.parseLong(e_password),,wallet);
+//        	   userdao abc=new userdao();
+//        	   abc.viewuser(user11);
+//   			
+//   			
 			
 			
 			
@@ -458,7 +498,7 @@ public class usertestmain {
 	}
 	 	 
 
-}
+
 	
 
 

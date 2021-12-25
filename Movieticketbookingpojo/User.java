@@ -8,7 +8,12 @@ public class User {
       private String email_id;
       private long mobile_num;
       private String e_password;
-      public int getUser_id() {
+      private int wallet;
+      public int getwallet() {
+		return wallet;
+	}
+	
+	public int getUser_id() {
   		return user_id;
   	}
   	public void setUser_id(int user_id) {
@@ -72,6 +77,32 @@ public class User {
 		this.email_id = email_id;
 		this.e_password = e_password;
 	}
+	public User(int userId) {
+		
+		this.user_id=userId;
+		
+	}
+	
+
+	public User(int user_id,
+			int wallet) {
+		super();
+		this.user_id = user_id;
+		
+		this.wallet = wallet;
+	}
+
+	public User(int user_id, String user_name, String gender, String email_id, long mobile_num, String e_password,
+			int wallet) {
+		super();
+		this.user_id = user_id;
+		this.user_name = user_name;
+		this.gender = gender;
+		this.email_id = email_id;
+		this.mobile_num = mobile_num;
+		this.e_password = e_password;
+		this.wallet = wallet;
+	}
 
 	public User(long mobile, String email) {
 		// TODO Auto-generated constructor stub
@@ -87,6 +118,18 @@ public class User {
 		// TODO Auto-generated constructor stub
 		this.user_name = user_name;
 	}
+
+//	public User(int user_id2, String user_name2, String gender2, String email_id2, long mobile_num2,
+//			String e_password2, int wallet2) {
+//		// TODO Auto-generated constructor stub
+//		this.user_id=user_id2;
+//		this.user_name=user_name2;
+//		this.gender=gender2;
+//		this.email_id=email_id2;
+//		this.mobile_num=mobile_num2;
+//		this.e_password=e_password2;
+//		this.wallet=wallet2;
+//	}
 		
 
 	}

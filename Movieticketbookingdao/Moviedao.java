@@ -73,7 +73,7 @@ public class Moviedao {
 			    pstmt.setString(2,Movie1.getMovie_name());
 				ResultSet rs=pstmt.executeQuery();
 				while(rs.next()) {
-				System.out.println(rs.getString(1)+"\t"+rs.getInt(2)+"\t"+rs.getString(3)+"\t"+rs.getInt(4)+"\t"+rs.getInt(5)+"\t"+rs.getString(6)+"\t"+rs.getString(7)+"\t"+rs.getString(8));
+				System.out.println("movie name : "  + rs.getString(1)+"\t"+"movie id :" +rs.getInt(2)+ "\t" +"movietype:"+rs.getString(3)+"\t"+"movieratings"+rs.getInt(4)+"\t"+"movie duration"+rs.getInt(5)+"\t"+"Director"+rs.getString(6)+"\t"+"music director"+rs.getString(7)+"\t"+"Hero name"+rs.getString(8));
 				}
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
