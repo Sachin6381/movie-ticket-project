@@ -1,4 +1,4 @@
-package com.Movieticketbookingdao;
+package com.MovieTicketBookingDaoImpl;
 
 import java.security.Timestamp;
 import java.sql.Connection;
@@ -113,7 +113,7 @@ public class Theatredao {
 		}
 }
  
-   public static void findmytheatre(Theatreinformation M1)  {
+   public  void findmytheatre(Theatreinformation M1)  {
 			String showQuery="select * from theatre where movie_id=?";
 			Connectionmv4 connection =new Connectionmv4();
 			Connection con;

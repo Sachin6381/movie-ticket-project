@@ -1,13 +1,19 @@
-package com.Movieticketbookingdao;
+package com.MovieTicketBookingDaoImpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.Movieticketbookingpojo.Bookingdetail;
+import com.Movieticketbookingpojo.Movie;
+import com.Movieticketbookingpojo.Theatreinformation;
+import com.Movieticketbookingpojo.User;
 import com.connection.Connectionmv4;
 
 public class Bookingdao {
@@ -97,8 +103,23 @@ public class Bookingdao {
 			  
 		  }
 		    
-
-}
-			
+		  public List<Bookingdetail> showBooking() throws ClassNotFoundException, SQLException {
+			  List<Bookingdetail> booking=new ArrayList<Bookingdetail>();
+	           Bookingdetail mvtheatre1=null;
 		
-              
+		       String showQuery="select * from booking_detail";
+		       Connectionmv4 connection =new Connectionmv4();
+		       Connection con=connection.DBConnection();
+	           Statement stmt=con.createStatement();
+		       ResultSet rs=stmt.executeQuery(showQuery);
+		       while(rs.next()) {
+              mvtheatre1=new  Bookingdetail(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getString(6));
+//			   System.out.println(rs.getString(3));
+              booking.add(mvtheatre1);
+	  
+		        }
+		       return booking;
+			
+		  }
+
+			}

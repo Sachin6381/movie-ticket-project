@@ -1,6 +1,8 @@
-package com.Movieticketbookingdao;
+package com.MovieTicketBookingDaoImpl;
 
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.spi.DirStateFactory.Result;
 
@@ -12,10 +14,13 @@ import java.sql.SQLException;
 import com.Movieticketbookingpojo.Movie;
 import com.Movieticketbookingpojo.User;
 import com.connection.Connectionmv4;
+import com.MovieTicketBookingDao.*;
+
+
 
 public class userdao {
 	public void insert(User User) {
-		String query = "insert into user_details(user_name,gender,email_id,mobile_num,e_password) values (?,?,?,?,?)";
+		String query = "insert into user_details(user_name,user_id,gender,email_id,mobile_num,e_password,wallet) values (?,?,?,?,?,?,?)";
 
 		try {
 			Connection con = Connectionmv4.DBConnection();
@@ -39,7 +44,7 @@ public class userdao {
 
 	}
 
-	public static User validateUser(String useremail, String userpassword) {
+	public  User validateUser(String useremail, String userpassword) {
 		Statement stmt = null;
 		User ob = null;
 		Connection con = null;
@@ -69,10 +74,12 @@ public class userdao {
 
 	}
 
-	public User updateUser(User user1) throws ClassNotFoundException, SQLException {
+	public User updateUser(User user1)  {
 
 		Connectionmv4 conect = new Connectionmv4();
-		Connection con = conect.DBConnection();
+		Connection con;
+		try {
+			con = conect.DBConnection();
 		String updateQuery = "update user_details set email_id=? where mobile_num=?";
 		PreparedStatement pstmt = con.prepareStatement(updateQuery);
 		pstmt.setString(1, user1.getEmail_id());
@@ -84,15 +91,22 @@ public class userdao {
 			User user = new User(rs.getString(1), rs.getString(3));
 			return user;
 
+		}}
+		catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return null;
 
 	}
 
-	public User updateUser1(User user2) throws ClassNotFoundException, SQLException {
+	public User updateUser1(User user2)  {
 		// System.out.println(user2.getEmail_id());
 		// System.out.println(user2.getE_password());
-
+ try {
 		Connectionmv4 conect = new Connectionmv4();
 
 		Connection con = conect.DBConnection();
@@ -107,6 +121,13 @@ public class userdao {
 			User user = new User(rs.getString(3), rs.getString(5));
 			return user;
 
+		}}
+		catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return null;
 	}
@@ -182,16 +203,25 @@ public class userdao {
 		}
 		return -1;
 	}
-	public static void viewuser(User user) throws ClassNotFoundException, SQLException
-	{
-		String view ="select * from user_details";
-		Connection con = Connectionmv4.DBConnection();
-		PreparedStatement pst=con.prepareStatement(view);
-		ResultSet rs=pst.executeQuery();
-		while(rs.next())
-		{
-			System.out.println(rs.getString(1)+rs.getInt(2)+rs.getString(3)+rs.getString(4)+rs.getInt(5)+rs.getString(6)+rs.getInt(7));
+	public List<User> showUser() throws ClassNotFoundException, SQLException {
+		
+		List<User> userList=new ArrayList<User>();
+		User userproducts=null;
+		
+		String showQuery="select * from user_details";
+		Connectionmv4 connection =new Connectionmv4();
+		Connection con=connection.DBConnection();
+	    Statement stmt=con.createStatement();
+		ResultSet rs=stmt.executeQuery(showQuery);
+		while(rs.next()) {
+			
+	    userproducts=new  User(rs.getString(1),rs.getString(3),rs.getString(4),rs.getLong(5),rs.getString(6),rs.getInt(7));
+//		System.out.println(rs.getString(3));
+	    userList.add(userproducts);
+	  
 		}
+		
+		 return userList;
 		
 		
 	}

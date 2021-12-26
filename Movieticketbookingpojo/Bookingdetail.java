@@ -3,7 +3,7 @@ package com.Movieticketbookingpojo;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import com.Movieticketbookingdao.Bookingdao;
+import com.MovieTicketBookingDaoImpl.Bookingdao;
 
 public class Bookingdetail {
 	private int booking_id;
@@ -61,9 +61,9 @@ public class Bookingdetail {
 
 	@Override
 	public String toString() {
-		return "Bookingdetail [booking_id=" + booking_id + ", user_id=" + user_id + ", theatre_id=" + theatre_id
-				+ ", no_seat=" + no_seat + ", total_amount=" + total_amount + ", booking_status=" + booking_status
-				+ "]";
+		return "Bookingdetail \nbooking_id=" + booking_id + "\n user_id=" + user_id + "\n theatre_id=" + theatre_id
+				+ "\n no_seat=" + no_seat + "\n total_amount=" + total_amount + "\n booking_status=" + booking_status
+				+ "\n\n";
 	}
 	public Bookingdetail( int user_id, int theatre_id, int no_seat, int total_amount,
 			String booking_status,String movie_name) {
@@ -74,10 +74,7 @@ public class Bookingdetail {
 		this.no_seat = no_seat;
 		this.total_amount = total_amount;
 		this.booking_status = booking_status;
-	
 		this.movie_name=movie_name;
-		
-		
 	}
 	public Bookingdetail() {
 		super();
@@ -91,9 +88,6 @@ public class Bookingdetail {
 		this.booking_status=status;
 		this.booking_id=bookingid2;
 	}
-	
-	
-	
 	
 }
 		

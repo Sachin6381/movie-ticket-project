@@ -1,4 +1,4 @@
-package com.Movieticketbookingdao;
+package com.MovieTicketBookingDaoImpl;
 
 import java.sql.Statement;
 import java.sql.Connection;
@@ -73,7 +73,7 @@ public class Moviedao {
 			    pstmt.setString(2,Movie1.getMovie_name());
 				ResultSet rs=pstmt.executeQuery();
 				while(rs.next()) {
-				System.out.println("movie name : "  + rs.getString(1)+"\t"+"movie id :" +rs.getInt(2)+ "\t" +"movietype:"+rs.getString(3)+"\t"+"movieratings"+rs.getInt(4)+"\t"+"movie duration"+rs.getInt(5)+"\t"+"Director"+rs.getString(6)+"\t"+"music director"+rs.getString(7)+"\t"+"Hero name"+rs.getString(8));
+				System.out.println("movie name : "  + rs.getString(1)+"\t"+"movie id :" +rs.getInt(2)+ "\t" +"movietype:"+rs.getString(3)+"\t"+"movieratings:"+rs.getInt(4)+"\t"+"movie duration:"+rs.getInt(5)+"\t"+"Director:"+rs.getString(6)+"\t"+"music director:"+rs.getString(7)+"\t"+"Hero name:"+rs.getString(8));
 				}
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -109,7 +109,7 @@ public class Moviedao {
 			}
 		}
 		
-	 public static void delete(Movie Movie3 )  {
+	 public void delete(Movie Movie3 )  {
 			
 		        String query="delete from Movie where movie_id=? ";
 			    Connection con;

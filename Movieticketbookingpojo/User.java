@@ -119,17 +119,22 @@ public class User {
 		this.user_name = user_name;
 	}
 
-//	public User(int user_id2, String user_name2, String gender2, String email_id2, long mobile_num2,
-//			String e_password2, int wallet2) {
-//		// TODO Auto-generated constructor stub
-//		this.user_id=user_id2;
-//		this.user_name=user_name2;
-//		this.gender=gender2;
-//		this.email_id=email_id2;
-//		this.mobile_num=mobile_num2;
-//		this.e_password=e_password2;
-//		this.wallet=wallet2;
-//	}
+	public User(String string, int int1, String string2, String string3, int int2, String string4, int int3) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public User( String user_name, String gender, String email_id, long mobile_num, String e_password,
+			int wallet) {
+		super();
+	
+		this.user_name = user_name;
+		this.gender = gender;
+		this.email_id = email_id;
+		this.mobile_num = mobile_num;
+		this.e_password = e_password;
+		this.wallet = wallet;
+	}
+
 		
 
 	}

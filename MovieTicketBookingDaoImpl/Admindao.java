@@ -1,4 +1,4 @@
-package com.Movieticketbookingdao;
+package com.MovieTicketBookingDaoImpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

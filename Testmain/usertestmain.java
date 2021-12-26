@@ -10,11 +10,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-import com.Movieticketbookingdao.Admindao;
-import com.Movieticketbookingdao.Bookingdao;
-import com.Movieticketbookingdao.Moviedao;
-import com.Movieticketbookingdao.Theatredao;
-import com.Movieticketbookingdao.userdao;
+import com.MovieTicketBookingDaoImpl.Admindao;
+import com.MovieTicketBookingDaoImpl.Bookingdao;
+import com.MovieTicketBookingDaoImpl.Moviedao;
+import com.MovieTicketBookingDaoImpl.Theatredao;
+import com.MovieTicketBookingDaoImpl.userdao;
 import com.Movieticketbookingpojo.Admin;
 import com.Movieticketbookingpojo.Bookingdetail;
 import com.Movieticketbookingpojo.Movie;
@@ -219,6 +219,8 @@ public class usertestmain {
                  sc.nextLine();
                  User userwall = new User(uid);
                  userdao userdao = new userdao();
+                 int wallbal =  userdao.getwallet(userwall);
+                 if(wallbal > 0) {
                 int dedwallbal =  userdao.getwallet(userwall)-180;
                 User userwall1 = new User(uid,dedwallbal);
                int res = userdao.updatewallet(userwall1);
@@ -227,6 +229,9 @@ public class usertestmain {
                }else {
             	   System.out.println("something went wrong try again!!");
                }
+                 }else {
+                	 System.out.println("please top up wallet!!");
+                 }
             }
             
             System.out.println("\n1.View my Booking details  \n2.cancel Booking");
@@ -326,8 +331,9 @@ public class usertestmain {
         		  System.out.println("admin notsuccess");
         	  }
            }while(user1==null);  
-        	   System.out.println("2.Insert\n3.Update\n4.Delete\n5.Showmovie\n6.Theatreinformation insert\n7.Update\n8.Delete\n9.Showtheatre");
-        	   int admin = Integer.parseInt(sc.nextLine());
+        	   System.out.println("2.Insert\n3.Update\n4.Delete\n5.Show Movie List\n6.Theatreinformation List insert\n7.Update\n8.Delete\n9.Show Theatre\n10.User List\n11.Booking List");
+        	   int admin = sc.nextInt();
+        	   sc.nextLine();
 
 switch (admin) {
 //   			case 1:
@@ -461,7 +467,8 @@ switch (admin) {
         	Theatredao Udoa=new Theatredao();
         	Theatreinformation udaoa=new Theatreinformation (theatreid21);
           	Udoa.delete(udaoa);
-   			}
+   			
+            break;
    			
            case 9:
         	   
@@ -473,33 +480,32 @@ switch (admin) {
 				System.out.println(Products13.get(i));
 				
 			}
-//           case 10:
-//        	   System.out.println("view user");
-//        	   User user11=new User(user_id,user_name,gender,email_id,Long.parseLong(e_password),,wallet);
-//        	   userdao abc=new userdao();
-//        	   abc.viewuser(user11);
-//   			
-//   			
+             break;
+                          
+           case 10:
+			userdao product15=new userdao();
+			List<User> Products121=product15.showUser();
+			for(int i=0;i<Products121.size();i++)
+			{
+		
+				
+				System.out.println(Products121.get(i));
+				
+			}
 			
-			
-			
-   			
-   			
-   			
-        
-		}
-		
-		
-		
-		
-		
-	}
-	
-	}
+			break;
+           case 11:
+        	   Bookingdao product16=new Bookingdao();
+   			List<Bookingdetail> Products18=product16.showBooking();
+   			for(int i=0;i<Products18.size();i++)
+   			{
+   				System.out.println(Products18.get(i));	
+   			}}}}
+}
 	 	 
 
 
 	
 
 
-//}
+
